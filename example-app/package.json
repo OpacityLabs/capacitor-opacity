@@ -13,12 +13,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@capacitor/core": "latest",
+    "@capacitor/android": "7.0.0",
     "@capacitor/camera": "latest",
+    "@capacitor/core": "latest",
+    "@capacitor/ios": "7.0.0",
     "@capacitor/splash-screen": "latest",
     "capacitor-opacity": "file:..",
-    "@capacitor/ios": "7.0.0",
-    "@capacitor/android": "7.0.0"
+    "dotenv": "^16.4.7"
   },
   "devDependencies": {
     "@capacitor/cli": "latest",

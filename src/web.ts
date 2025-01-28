@@ -1,10 +1,16 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { WebPlugin } from '@capacitor/core';
 
-import type { OpacityPlugin } from './definitions';
+import type { OpacityEnvironment, OpacityPlugin } from './definitions';
 
 export class OpacityWeb extends WebPlugin implements OpacityPlugin {
-  async echo(options: { value: string }): Promise<{ value: string }> {
-    console.log('ECHO', options);
-    return options;
+  initialize(_options: { apiKey: string; dryRun: boolean; environment: OpacityEnvironment }): Promise<void> {
+    throw new Error('Not supported on web.');
+  }
+  get(_options: {
+    name: string;
+    params?: Record<string, any>;
+  }): Promise<{ json: Record<string, any>; signature?: string; proof?: string }> {
+    throw new Error('Not supported on web.');
   }
 }

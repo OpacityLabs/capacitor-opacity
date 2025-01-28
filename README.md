@@ -9,29 +9,48 @@ npm install capacitor-opacity
 npx cap sync
 ```
 
-## API
+## Android
 
-<docgen-index>
+You need to modify your project root gradle to include jitpack.io and mozilla's maven repos:
 
-* [`echo(...)`](#echo)
+```
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
 
-</docgen-index>
+buildscript {
 
-<docgen-api>
-<!--Update the source file JSDoc comments and rerun docgen to update the docs below-->
+    repositories {
+        google()
+        mavenCentral()
+        maven { url "https://maven.mozilla.org/maven2/" } // ADD THIS
+        maven { url 'https://jitpack.io' } // ADD THIS
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.7.2'
+        classpath 'com.google.gms:google-services:4.4.2'
 
-### echo(...)
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
 
-```typescript
-echo(options: { value: string; }) => Promise<{ value: string; }>
+apply from: "variables.gradle"
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        maven { url "https://maven.mozilla.org/maven2/" } // ADD THIS
+        maven { url 'https://jitpack.io' } // ADD THIS
+    }
+}
+
 ```
 
-| Param         | Type                            |
-| ------------- | ------------------------------- |
-| **`options`** | <code>{ value: string; }</code> |
+You also need to bump the minSdk version to 25, in `variables.gradle`:
 
-**Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
-
---------------------
-
-</docgen-api>
+```groovy
+ext {
+    minSdkVersion = 25
+    ...
+}
+```

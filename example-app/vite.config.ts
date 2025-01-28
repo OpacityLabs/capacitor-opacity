@@ -1,4 +1,8 @@
 import { defineConfig } from 'vite';
+import dotenv from 'dotenv';
+
+// Load environment variables from .env file
+dotenv.config();
 
 export default defineConfig({
   root: './src',
@@ -7,4 +11,7 @@ export default defineConfig({
     minify: false,
     emptyOutDir: true,
   },
+  define: {
+    'process.env': process.env,
+  }
 });

@@ -23,6 +23,9 @@
             </intent-filter>
 
         </activity>
+        <activity
+            android:name="com.opacitylabs.opacitycore.InAppBrowserActivity"
+            android:theme="@style/Theme.AppCompat.DayNight" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
