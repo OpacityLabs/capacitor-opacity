@@ -9,31 +9,26 @@ import com.opacitylabs.opacitycore.OpacityCore;
 
 @CapacitorPlugin(name = "Opacity")
 public class OpacityPlugin extends Plugin {
-    OpacityCore core;
-
     @PluginMethod
     public void initialize(PluginCall call) {
         String apiKey = call.getString("apiKey");
         boolean dryRun = call.getBoolean("dryRun");
         int environmentRaw = call.getInt("environment");
 
-        OpacityCore.Environment environment;
-        switch (environmentRaw) {
-            case 0:
-                environment = OpacityCore.Environment.TEST;
-                break;
-            case 1:
-                environment = OpacityCore.Environment.LOCAL;
-                break;
-            case 2:
-                environment = OpacityCore.Environment.STAGING;
-                break;
-            default:
-                environment = OpacityCore.Environment.PRODUCTION;
-                break;
-        }
+        OpacityCore.Environment environment = switch (environmentRaw) {
+            case 0 -> OpacityCore.Environment.TEST;
+            case 1 -> OpacityCore.Environment.LOCAL;
+            case 2 -> OpacityCore.Environment.STAGING;
+            default -> OpacityCore.Environment.PRODUCTION;
+        };
 
-        core.initialize(apiKey, dryRun, environment);
+        OpacityCore.initialize(apiKey, dryRun, environment);
         call.resolve(null);
+    }
+
+    @PluginMethod
+    public void get(PluginCall call) {
+        String name = call.getString("name");
+        JSObject params = call.getObject("params");
     }
 }

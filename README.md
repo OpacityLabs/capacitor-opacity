@@ -46,7 +46,7 @@ allprojects {
 
 ```
 
-You also need to bump the minSdk version to 25, in `variables.gradle`:
+Bump the minSdk version to 25, in `variables.gradle`:
 
 ```groovy
 ext {
