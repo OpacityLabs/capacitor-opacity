@@ -11,7 +11,23 @@ window.initializeSDK = async () => {
     }
 }
 
+window.getGithubProfile = async () => {
+    try {
+
+        const res = await Opacity.get({name: "flow:github:profile"});
+        console.log("GOT GITHUB PROFILE! 🟦🟩🟩")
+        console.log(JSON.stringify(res));
+    } catch(e) {
+        console.error(`Error: ${e}`);
+    }
+}
+
 window.getUberRiderProfile = async () => {
-    const res = await Opacity.get({name: "flow:uber_rider:profile"});
-    console.log(res);
+    try {
+        const res = await Opacity.get({name: "flow:uber_rider:profile"});
+        console.log("GOT UBER RIDER PROFILE! 🟦🟩🟩")
+        console.log(JSON.stringify(res));
+    } catch(e) {
+        console.error(`Error: ${e}`);
+    }
 }
