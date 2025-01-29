@@ -1,5 +1,5 @@
 {
-  "name": "capacitor-opacity",
+  "name": "@opacity-labs/capacitor-opacity",
   "version": "0.0.0",
   "description": "Opacity SDK for CapacitorJS",
   "main": "dist/plugin.cjs.js",
