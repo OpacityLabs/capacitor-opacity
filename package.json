@@ -1,6 +1,6 @@
 {
   "name": "capacitor-opacity",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "description": "Opacity SDK for CapacitorJS",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
