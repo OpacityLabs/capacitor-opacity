@@ -1,6 +1,6 @@
 # capacitor-opacity
 
-Opacity SDK for CapacitorJS
+Opacity SDK for CapacitorJS. Only works on iOS and Android.
 
 ## Install
 
@@ -53,4 +53,43 @@ ext {
     minSdkVersion = 25
     ...
 }
+```
+
+## Usage
+
+You need to initialize the SDK first before calling the get function to get the requested resource:
+
+```js
+import { Opacity, OpacityEnvironment } from 'capacitor-opacity';
+
+const apiKey = import.meta.env.VITE_OPACITY_API_KEY;
+
+window.initializeSDK = async () => {
+  try {
+    await Opacity.initialize({ apiKey, dryRun: false, environment: OpacityEnvironment.Production });
+    console.log('SDK Initialized');
+  } catch (e) {
+    console.error(`SDK Not Initialized: ${e}`);
+  }
+};
+
+window.getGithubProfile = async () => {
+  try {
+    const res = await Opacity.get({ name: 'flow:github:profile' });
+    console.log('GOT GITHUB PROFILE! 🟦🟩🟩');
+    console.log(JSON.stringify(res));
+  } catch (e) {
+    console.error(`Error: ${e}`);
+  }
+};
+
+window.getUberRiderProfile = async () => {
+  try {
+    const res = await Opacity.get({ name: 'flow:uber_rider:profile' });
+    console.log('GOT UBER RIDER PROFILE! 🟦🟩🟩');
+    console.log(JSON.stringify(res));
+  } catch (e) {
+    console.error(`Error: ${e}`);
+  }
+};
 ```
