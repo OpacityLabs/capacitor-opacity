@@ -23,8 +23,9 @@ class OpacityPlugin : Plugin() {
         val apiKey = call.getString("apiKey")
         val dryRun = call.getBoolean("dryRun")
         val environmentRaw = call.getInt("environment")
+        val shouldShowErrorsInWebView = call.getBoolean("shouldShowErrorsInWebView")
 
-        if (apiKey == null || dryRun == null || environmentRaw == null) {
+        if (apiKey == null || environmentRaw == null) {
             call.reject("Invalid Arguments")
             return
         }
@@ -36,7 +37,7 @@ class OpacityPlugin : Plugin() {
             else -> OpacityCore.Environment.PRODUCTION
         }
 
-        initialize(apiKey, dryRun, environment)
+        initialize(apiKey, dryRun ?: false, environment, shouldShowErrorsInWebView ?: true)
         call.resolve(null)
     }
 

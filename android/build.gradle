@@ -60,9 +60,7 @@ dependencies {
     testImplementation "junit:junit:$junitVersion"
     androidTestImplementation "androidx.test.ext:junit:$androidxJunitVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$androidxEspressoCoreVersion"
-    implementation "androidx.security:security-crypto:1.1.0-alpha06"
-    implementation "org.mozilla.geckoview:geckoview-nightly:132.0.20240918041351"
     implementation "androidx.localbroadcastmanager:localbroadcastmanager:1.1.0"
     implementation "androidx.appcompat:appcompat:1.7.0"
-    api "com.github.OpacityLabs:opacity-android:4.0.11"
+    api "com.github.OpacityLabs:opacity-android:5.0.2"
 }
