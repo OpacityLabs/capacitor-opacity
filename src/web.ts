@@ -4,7 +4,12 @@ import { WebPlugin } from '@capacitor/core';
 import type { OpacityEnvironment, OpacityPlugin } from './definitions';
 
 export class OpacityWeb extends WebPlugin implements OpacityPlugin {
-  initialize(_options: { apiKey: string; dryRun: boolean; environment: OpacityEnvironment }): Promise<void> {
+  initialize(_options: {
+    apiKey: string;
+    dryRun?: boolean;
+    environment: OpacityEnvironment;
+    shouldShowErrorsInWebView?: boolean;
+  }): Promise<void> {
     throw new Error('Not supported on web.');
   }
   get(_options: {

@@ -15,13 +15,14 @@ public class OpacityPlugin: CAPPlugin, CAPBridgedPlugin {
 
   @objc func initialize(_ call: CAPPluginCall) {
     let apiKey = call.getString("apiKey")!
-    let dryRun = call.getBool("dryRun")!
+    let dryRun = call.getBool("dryRun") ?? false
     let environmentRaw = call.getInt("environment")!
+    let shouldShowErrorsInWebView = call.getBool("shouldShowErrorsInWebView") ?? true
     let environment = OpacitySwiftWrapper.Environment(rawValue: environmentRaw)!
 
     do {
       try OpacitySwiftWrapper
-        .initialize(apiKey: apiKey, dryRun: dryRun, environment: environment)
+        .initialize(apiKey: apiKey, dryRun: dryRun, environment: environment, shouldShowErrorsInWebView: shouldShowErrorsInWebView)
       call.resolve()
     } catch {
       call.reject("Error initializing the Opacity SDK. Check the native logs")

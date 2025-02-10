@@ -12,6 +12,11 @@ export enum OpacityEnvironment {
 }
 
 export interface OpacityPlugin {
-  initialize(options: { apiKey: string; dryRun: boolean; environment: OpacityEnvironment }): Promise<void>;
+  initialize(options: {
+    apiKey: string;
+    dryRun?: boolean;
+    environment: OpacityEnvironment;
+    shouldShowErrorsInWebView?: boolean;
+  }): Promise<void>;
   get(options: { name: string; params?: Record<string, any> }): Promise<WorkflowResponse>;
 }

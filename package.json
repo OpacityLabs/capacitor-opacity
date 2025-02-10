@@ -43,7 +43,8 @@
     "build": "npm run clean && npm run docgen && tsc && rollup -c rollup.config.mjs",
     "clean": "rimraf ./dist",
     "watch": "tsc --watch",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "sync": "npm run build && cd example-app && rm -rf dist && npm run build && npx cap sync"
   },
   "devDependencies": {
     "@capacitor/android": "^7.0.0",
